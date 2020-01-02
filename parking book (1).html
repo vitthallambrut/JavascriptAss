@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Car Parking</title>
+	
+    <style type="text/css">
+    	#div1
+    	{
+    		border: 1px solid black;
+    		height: 300px;
+    		width: 400px;
+
+    	}
+    	.d1
+    	{
+    		border:1px solid black;
+    		height: 50px;
+    		width: 50px;
+    	}
+    	#div2
+    	{
+    		border:1px solid black;
+    		height: 150px;
+    		width: 250px;
+    		padding: 1%;
+    	}
+	</style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+	<br>
+	<div id="div1" class="container">
+		<div class="row"></div>
+		<br><br>
+		<div  id="div2" class="container">
+		<div class="row">
+				<div class="col-md-3">
+					
+					<button  class="d1" type="button" onclick="change2()"  id="bt">1 </button>
+				</div>
+				<div class="col-md-3">
+					
+					<button  class="d1" type="button" onclick="change()"  id="btn" style="background-color: grey" >2 </button>
+				</div>
+				<div class="col-md-3">
+					
+					<button  class="d1" type="button" onclick="change3()" id="bt1">3 </button>
+				</div>
+		</div>
+		<br><br>
+		<div class="row">
+				<div class="col-md-3">
+					<button  class="d1" type="button" onclick="change1()" id="btn1" style="background-color: grey">4</button>
+				</div>
+				<div class="col-md-3">
+					
+					<button  class="d1" type="button" onclick="change4()" id="bt2">5 </button>
+				</div>
+				<div class="col-md-3">
+					
+					<button  class="d1" type="button" onclick="change5()" id="bt3">6 </button>
+				</div>
+		</div>
+	</div>
+		<br><br>		
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#mymodal">
+        Book Parking
+    </button>
+    <div class="modal fade" id="mymodal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Choose Pariking lot</p> 
+                    <select style="width: 100px" id="val">
+                    	<option value="1">1</option>
+                    	<option value="3">3</option>
+                    	<option  value="5">5</option>
+                    	<option value="6">6</option>
+                    </select>      
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="book()">Book</button>  
+                </div>  
+            </div>
+        </div>
+    </div>
+	</div>
+
+<script type="text/javascript" >
+	
+var btn1=document.getElementById("bt");
+var btn2=document.getElementById("bt1");
+var btn3=document.getElementById("bt2");
+var btn4=document.getElementById("bt3");
+function change()
+{
+	var a=document.getElementById("btn");
+	console.log(a);
+	var z=confirm("Are You sure you want to make parking lot free?");
+	if(z==true)
+	{
+		a.style.backgroundColor="white";
+		
+		var node=document.getElementById("val");
+		console.log(node);
+		var pn=document.createElement("option");
+		pn.setAttribute("value",2)
+		pn.appendChild(document.createTextNode(2));
+		node.appendChild(pn);
+		
+	}
+	else
+	{
+		a.style.backgroundColor="grey";
+	}
+	
+}
+function change1()
+{
+	var b=document.getElementById("btn1");
+	console.log(b);
+	var z=confirm("Are You sure you want to make parking lot free?");
+	if(z==true)
+	{
+		b.style.backgroundColor="white";
+		var node=document.getElementById("val");
+		console.log(node);
+		var pn=document.createElement("option");
+		pn.setAttribute("value",4)
+		pn.appendChild(document.createTextNode(4));
+		node.appendChild(pn);
+	}
+	else
+	{
+		b.style.backgroundColor="grey";
+	}
+	
+}
+function change2()
+{
+	var btn1=document.getElementById("bt");
+	var z=confirm("Are You sure you want to make parking lot free?");
+	if(z==true)
+	{
+		btn1.style.backgroundColor="white";
+	}
+	else
+	{
+		btn1.style.backgroundColor="grey";
+	}
+	
+}
+function change3()
+{
+	
+	var z=confirm("Are You sure you want to make parking lot free?");
+	if(z==true)
+	{
+		btn2.style.backgroundColor="white";
+	}
+	else
+	{
+		btn2.style.backgroundColor="grey";
+	}
+	
+}
+function change4()
+{
+	
+	var z=confirm("Are You sure you want to make parking lot free?");
+	if(z==true)
+	{
+		btn3.style.backgroundColor="white";
+	}
+	else
+	{
+		btn3.style.backgroundColor="grey";
+	}
+	
+}
+function change5()
+{
+	
+	var z=confirm("Are You sure you want to make parking lot free?");
+	if(z==true)
+	{
+		btn4.style.backgroundColor="white";
+	}
+	else
+	{
+		btn4.style.backgroundColor="grey";
+	}
+	
+}
+
+function book()
+{
+	var value=document.getElementById("val").value;
+	console.log(value);
+	if(value==1)
+	{
+		btn1.style.backgroundColor="grey";
+	}
+	else if(value==3)
+	{
+		btn2.style.backgroundColor="grey";
+	}
+	else if(value==5)
+	{
+		btn3.style.backgroundColor="grey";
+	}
+	else if(value==6)
+	{
+		btn4.style.backgroundColor="grey";
+	}
+	
+	
+}
+</script>
+</body>
+</html>
+
+
+

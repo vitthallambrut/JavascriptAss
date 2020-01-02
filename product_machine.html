@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	<style type="text/css">
+		input{
+			box-sizing: border-box;
+			background-color: #f8f8f8;
+		}
+		#add_product{
+  			position: relative;
+  			left: 10px;
+  			float:left;
+  		}
+		#d3{
+			position: relative;
+			margin-top: 200px;
+			width: 300px;
+			float:left;
+			margin:10px;
+			left:90px;
+		}
+		#d4{
+			position: relative;
+			margin-top: 50px;
+			width: 300px;
+			float:left; 
+			left:100px;
+			margin:10px;
+		}
+	</style>
+	
+</head>
+<body>
+	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" 
+	data-target="#myModal" id="add_product">Add Product</button>
+	<div id="d3">		
+		<ul style="list-style-type: none;" id="dynamic-list">
+			<li><h3>All products</h3></li>	
+   		</ul>
+   		<h3 id="h1"></h2>
+	</div>
+				
+	<div id="d4">
+		<ul style="list-style-type: none;" id="dynamic-cart">
+   			<li><h3>My-cart</h3></li>	
+   	</ul>
+   		<h3 id="h2"></h2>
+   		<h3 id="h3"></h2>
+	</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+          	<h4 class="modal-title">Add New Product</h4>
+        </div>
+        <div class="modal-body">
+        
+          <h5>Product Name:</h5>
+          <input type="text" id="name">
+
+          <h5>Stock:</h5>
+          <input type="text" id="stock">
+
+          <h5>Price:</h5>
+          <input type="text" id="price"><br><br>
+
+          <img id="imge" width="130px" height="130px">
+          <button onclick="img()">Choose Image</button>
+
+        </div>
+
+        <div class="modal-footer">
+          	
+          	<button type="button" class="btn btn-info btn-lg"  data-dismiss="modal" onclick="submit(this)">Add</button>  
+        </div>
+      </div> 
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript">
+		
+			var i=0;
+			var addcart=0;
+			var count=1;
+			var c=1;
+			var add_to_cart;
+			var name;
+			var stock;
+			var price;
+			var cal_price=0;
+			function img()
+			{
+				document.getElementById("imge").src="shahid.jpg";
+			}
+			function submit(button)
+			{
+				var ul = document.getElementById("dynamic-list");
+   	 			var li=document.createElement("li");
+   	 			li.setAttribute('id',i);
+   	 			var div=document.createElement("div");
+          		div.setAttribute('id',i);
+          		div.style.border = "1px solid black";
+          		div.style.height= "200px";
+          		div.style.width= "200px";
+				var name=document.createTextNode("Product name: "+document.getElementById('name').value);
+				var stock=document.createTextNode("Stock: "+document.getElementById('stock').value);
+				var price=document.createTextNode("Price: "+document.getElementById('price').value);
+
+				var li1=document.createElement("li");
+				var li2=document.createElement("li");
+				var li3=document.createElement("li");
+				var li4=document.createElement("li");
+				var li5=document.createElement("li");
+				
+				li1.appendChild(name);
+   	 			li2.appendChild(stock);
+   	 			li3.appendChild(price);
+
+   	 			var img=document.createElement("IMG");
+				    img.setAttribute('src',"shahid.jpg");
+				    img.setAttribute('height','100') ;
+          	img.setAttribute('width',"130");
+          		li4.appendChild(img);
+
+   	 			var add_to_cart=document.createElement("button");
+                var txt = document.createTextNode("Add to cart");
+                add_to_cart.appendChild(txt);
+
+            add_to_cart.setAttribute('id',"btn",addcart);
+            add_to_cart.setAttribute('class',"btn btn-success btn-sm");
+   			  	add_to_cart.setAttribute('onclick',"add_cart(this)");
+   			  	addcart=addcart+1;
+   			  	li5.appendChild( add_to_cart);
+   			  	
+                div.appendChild(li1);
+                div.appendChild(li2);
+                div.appendChild(li3);
+                div.appendChild(li4);
+                div.appendChild(li5);
+
+    //             var stock=document.getElementById('stock').value;
+				// if(stock==0)
+    //             {
+    //             	console.log("enter into if");
+    //             	document.getElementById('btn').disabled = true;
+    //         	}
+                
+                  var b = document.createElement("br");
+
+   	 			li.appendChild(div);
+   	 			li.appendChild(b);
+   	 			ul.appendChild(li);
+
+   	 		
+                document.getElementById("h1").innerHTML="Total Product: "+count;
+                count=count+1;
+			}
+          document.getElementById('name').value="";
+          document.getElementById('stock').value="";
+          document.getElementById('price').value="";
+          document.getElementById("imge").src="";
+
+			function add_cart(button)
+			{	
+				var confirm_prompt= prompt("Enter Quantity and Confirm");
+      				
+      			var ul = document.getElementById("dynamic-cart");
+      			var li=document.createElement("li");
+   	 			li.setAttribute('id',i);
+
+   	 			var div=document.createElement("div");
+          		div.setAttribute('id',i);
+          		div.style.border = "1px solid black";
+          		div.style.height= "200px";
+          		div.style.width= "200px";
+      				
+      			var name=document.createTextNode("Product name: "+document.getElementById('name').value);
+      			var price=document.getElementById('price').value;
+          		var Quantity=document.createTextNode("Quantity: "+confirm_prompt);
+          		var s=price*confirm_prompt;
+          		cal_price=s+cal_price;
+          		var tprice=document.createTextNode("Total Price: "+s+" rs.");
+          		
+
+          		var li1=document.createElement("li");
+      			var li2=document.createElement("li");
+      			var li3=document.createElement("li");
+      			var li4=document.createElement("li");
+          		
+      				li1.appendChild(name);
+      				li2.appendChild(Quantity);
+      				li3.appendChild(tprice);
+
+      			var img=document.createElement("IMG");
+				img.setAttribute('src',"shahid.jpg");
+				img.setAttribute('height','100') ;
+          		img.setAttribute('width',"130");
+          		li4.appendChild(img);
+          	
+                div.appendChild(li1);
+                div.appendChild(li2);
+                div.appendChild(li3);
+                div.appendChild(li4);
+                
+                  var b = document.createElement("br");
+
+   	 			li.appendChild(div);
+   	 			li.appendChild(b);
+                ul.appendChild(li);
+   	 			
+        		document.getElementById("h2").innerHTML="Total Product: "+c;
+              c=c+1;
+            document.getElementById("h3").innerHTML="Total Cost: "+cal_price;
+     		}
+</script>
+</html>

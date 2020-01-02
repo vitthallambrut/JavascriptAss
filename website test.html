@@ -1,0 +1,150 @@
+<html>
+    <style>
+    tr:hover{
+        background-color: #EEE;
+    }
+    </style>
+<head >Members list</head><br><br>
+            <body onsubmit="return fun2()">
+        Id:<input type="text" placeholder="enter i" id="a1" ><br><br>
+        Name:<input type="text" placeholder="enter n" id="a2"><br><br>
+        <p id="errorn" style="color: red"></p>
+        Age:<input type="text" placeholder="enter a" id="a3"><br><br>
+        <p id="errora" style="color: red"></p>
+        Occupation:<input type="text" placeholder="enter o" id="a4"><br><br>
+        Address:<input type="text" placeholder="enter a" id="a5"><br><br>
+        <input type="button" value="submit" onclick="fun1()">
+        <input type="button" value="add" onclick="fun2()">
+        <input type="button" value="delete" onclick="fun3()">
+        <input type="button" value="edit" onclick="fun4()">
+        <table id="tab" border="2px" onclick="show()"></table>
+        <p id="errors" style="color: red"></p>
+        <script>
+               var tt=document.getElementById("tab"),
+               rowIndex=document.getElementById("tab");
+               rIndex=this.rowIndex;
+               var arr=new Array();
+            // function fun2()
+            // {
+                // var show;
+                // if(confirm("enter details"))
+                // {
+                // show=="yes";
+                // }
+                // else
+                // {
+                //     show=="no";
+                // }
+                // if(show=="yes")
+                // {
+                //     add();
+                // }
+            // }
+      function fun2() 
+        { 
+            if(confirm("enter user details"))
+            {
+          
+    var txt1=document.getElementById("a1").value;
+    // tab.rows[rIndex].cells[0].innerHTML=txt1;
+    var txt2=document.getElementById("a2").value;
+       
+            regexp=/^[a-zA-Z]{3,30}$/;
+            if(regexp.test(txt2))
+           {
+               innerHTML="";
+           }
+           else
+           {
+               document.getElementById("errorn").innerHTML="****Only characters****";
+               return false;
+           }
+    var txt3=document.getElementById("a3").value;
+      
+    // regexp=/^[1-100]{1,30}$/;
+    //         if(regexp.test(txt3))
+    //        {
+    //            innerHTML="";
+    //        }
+    //        else
+    //        {
+    //            document.getElementById("errora").innerHTML="****Only digits****";
+    //            return false;
+    //        }
+    var txt4=document.getElementById("a4").value;
+    var txt5=document.getElementById("a5").value;
+    var obj={};
+ obj.Id=txt1;
+ obj.Name=txt2;
+ obj.Age=txt3;
+ obj.Occupation=txt4;
+ obj.Address=txt5;
+ arr.push(obj);
+            }
+        
+            else
+            {
+             "";
+            }          
+}
+    function fun1()
+    {
+        
+    var str="";
+    // regexp=/^[""]{3,30}$/;
+    //         if(regexp.test(tt))
+    //        {
+    //            innerHTML="";
+    //        }
+    //        else
+    //        {
+    //            document.getElementById("errors").innerHTML="****all fields are required****";
+    //            return false;
+    //        }
+    str+="<th>Id</th><th>Name</th><th>Age</th><th>Occupation</th><th>Address</th>"
+    for(var i=0;i<arr.length;i++)
+    {
+str+="<tr><td>"+arr[i].Id+"</td><td>"+arr[i].Name+
+"</td><td>"+arr[i].Age+"</td><td>"+arr[i].Occupation+"</td><td>"+arr[i].Address+"</td></tr>"
+    }
+    tt.innerHTML=str;
+    }
+    function fun3()
+    {
+        tab.deleteRow(rIndex);
+    }
+    function show()
+    {
+       
+            for(var i=1;i<tt.rows.length;i++)
+            {
+              tt.rows[i].onclick=function()
+              {
+                rIndex=this.rowIndex;
+                document.getElementById("a1").value=this.cells[0].innerHTML;
+                document.getElementById("a2").value=this.cells[1].innerHTML;
+                document.getElementById("a3").value=this.cells[2].innerHTML;
+                document.getElementById("a4").value=this.cells[3].innerHTML;
+                document.getElementById("a5").value=this.cells[4].innerHTML;
+              }
+            }
+    }
+
+function fun4()
+{
+    var txt1=document.getElementById("a1").value;
+              txt2=document.getElementById("a2").value;
+              txt3=document.getElementById("a3").value;
+              txt4=document.getElementById("a4").value;
+              txt5=document.getElementById("a5").value;
+
+          tab.rows[rIndex].cells[0].innerHTML=txt1;
+          tab.rows[rIndex].cells[1].innerHTML=txt2;
+          tab.rows[rIndex].cells[2].innerHTML=txt3;
+          tab.rows[rIndex].cells[3].innerHTML=txt4;
+          tab.rows[rIndex].cells[4].innerHTML=txt5;
+}
+
+        </script>
+    </body>
+</html>
