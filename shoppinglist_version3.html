@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>shopping cart example</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>Product Name:</td>
+                <td><input type="text" id="prodname"></td>
+            </tr>
+            <tr>
+                <td>Product Quantity:</td>
+                <td><input type="text" id="prodqty"></td>
+            </tr>
+            <tr>
+                <td><button type="button" id="addbtn">Add</button>
+                <button type="button" id="updbtn">Update</button>
+                <button type="button" id="delbtn">Delete</button></td>
+            </tr>
+        </table>
+        <script>
+            var prodn = document.getElementById("prodname");
+            var prodq = document.getElementById("prodqty");
+
+            var list = document.createElement("ul");
+            document.body.appendChild(list);
+
+            // add button
+            var add = document.getElementById("addbtn");
+            var handler1 = function()
+            {
+                var listele = document.createElement("li");
+                listele.setAttribute('id',prodn.value);
+                list.appendChild(listele);
+                listele.innerHTML = prodn.value + "*" + prodq.value;
+            };
+            add.addEventListener("click",handler1,false);
+            
+            // update button
+            var update = document.getElementById("updbtn");
+            var handler2 = function()
+            {
+                var up = document.getElementById(prodn.value);
+                up.innerHTML = prodn.value + "*" + prodq.value;
+            };
+            update.addEventListener("click",handler2,false);
+
+            //delete button
+            var del = document.getElementById("delbtn");
+            var handler3 = function()
+            {
+                var d = document.getElementById(prodn.value);
+                list.removeChild(d);
+            }
+            del.addEventListener("click",handler3,false);
+        </script>
+    </body>
+</html>
